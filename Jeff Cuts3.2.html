@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Jeff Cuts</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary-black: #000000;
+  --primary-white: #ffffff;
+  --text-dark: #111111;
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.5s ease;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--primary-white);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* Header Section */
+header {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-black), var(--primary-white));
+  position: relative;
+  overflow: hidden;
+}
+
+/* Logo Container */
+.logo-container {
+  position: relative;
+  display: inline-block;
+}
+
+.logo {
+  width: 300px; /* increased width to fit text on one line */
+  height: 80px;
+  background: var(--primary-black);
+  color: var(--primary-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  white-space: nowrap; /* prevents text from breaking into 2 lines */
+  z-index: 2;
+}
+
+/* Small Orbiting Profile Circle */
+.orbit-container {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  bottom: 5px;
+  right: 5px;
+  animation: orbit 6s linear infinite;
+}
+
+.orbit-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-black);
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.orbit-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(10px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(10px) rotate(-360deg); }
+}
+
+/* Hero Text */
+.hero-text {
+  text-align: center;
+  color: var(--primary-black);
+  z-index: 1;
+}
+
+.hero-text h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.hero-text p {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  text: center;
+}
+
+.centered-text {
+  max-width: 600px; /* limits width */
+  margin: 0 auto;   /* centers the paragraph */
+  text-align: center; /* optional: centers text inside the box */
+}
+
+/* CTA Button */
+.cta-btn {
+  padding: 18px 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 50px;
+  border: 2px solid var(--primary-black);
+  background: transparent;
+  color: var(--primary-black);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 0%;
+  height: 100%;
+  background: var(--primary-black);
+  transition: 0.5s;
+  z-index: -1;
+}
+
+.cta-btn:hover::before { width: 100%; }
+.cta-btn:hover { color: var(--primary-white); }
+
+.hero-text h1:hover {
+  text-shadow: 0 0 20px var(--primary-black);
+  transform: scale(1.05);
+}
+
+.hero-text h1, .hero-text p, .cta-btn {
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeUp 1s forwards;
+}
+
+.hero-text h1 { animation-delay: 0.3s; }
+.hero-text p { animation-delay: 0.6s; }
+.cta-btn { animation-delay: 0.9s; }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media(max-width: 768px){
+  .hero-text h1 { font-size: 3rem; }
+  .hero-text p { font-size: 1rem; }
+  .logo { width: 250px; height: 60px; font-size: 1.5rem; }
+  .orbit-circle { width: 30px; height: 30px; }
+  .orbit-container { width: 50px; height: 50px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <!-- LOGO + SMALL ORBITING PROFILE -->
+  <div class="logo-container">
+    <div class="logo">The Jeff Cuts</div> <!-- Logo name properly on one line -->
+
+    <!-- Orbiting profile picture -->
+    <div class="orbit-container">
+      <div class="orbit-circle">
+        <!-- ONLY PROFILE IMAGE HERE -->
+        <img src="Pics/Profile Trans.png" alt="Barber Profile">
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO TEXT -->
+  <div class="hero-text">
+    <h1>The Jeff Cuts</h1> <!-- Hero title -->
+    <p class="centered-text">Experience precision cuts, luxury styling, and a welcoming atmosphere for every client. Our barbers at The Jeff Cuts are experts in modern and classic styles, giving you a look that turns heads.</p>
+    <button class="cta-btn">Book Now</button>
+  </div>
+</header>
+
+</body>
+</html>
